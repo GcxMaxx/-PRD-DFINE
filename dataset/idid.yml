@@ -1,0 +1,69 @@
+task: detection
+
+evaluator:
+  type: CocoEvaluator
+  iou_types: ['bbox', ]
+
+num_classes: 4 # your dataset classes
+remap_mscoco_category: False
+
+train_dataloader:
+  type: DataLoader
+  dataset:
+    type: CocoDetection
+    # img_folder: /mnt/data/user/gg/deim/dataset/ididitrue/train/img
+    # ann_file: /mnt/data/user/gg/deim/dataset/ididitrue/train.json   
+    img_folder: /mnt/data/user/gg/deim/dataset/idid121/train
+    ann_file: /mnt/data/user/gg/deim/dataset/idid121/train/train.json
+    return_masks: False
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: True
+  num_workers: 4
+  drop_last: True
+  pin_memory: True
+  collate_fn:
+    type: BatchImageCollateFunction
+
+
+# val_dataloader:
+#   type: DataLoader
+#   dataset:
+#     type: CocoDetection
+#     img_folder: /mnt/data/user/gg/deim/dataset/visdrone_COCO/val2017
+#     ann_file: /mnt/data/user/gg/deim/dataset/visdrone_COCO/annotations/instances_val2017.json
+#     # img_folder: /datasets/MoGuiMianJu/visdrone/VisDrone2019-DET-val/images
+#     # ann_file: /datasets/MoGuiMianJu/visdrone/VisDrone2019-DET-val/annotations/val.json
+#     return_masks: False
+#     transforms:
+#       type: Compose
+#       ops: ~
+#   shuffle: False
+#   num_workers: 4
+#   drop_last: False
+#   pin_memory: True
+#   collate_fn:
+#     type: BatchImageCollateFunction
+
+val_dataloader:
+  type: DataLoader
+  dataset:
+    type: CocoDetection
+    # img_folder:  /mnt/data/user/gg/deim/dataset/ididitrue/val/img
+    # ann_file: /mnt/data/user/gg/deim/dataset/ididitrue/val.json
+    img_folder:  /mnt/data/user/gg/deim/dataset/idid121/val
+    ann_file:  /mnt/data/user/gg/deim/dataset/idid121/val/val.json
+   
+    return_masks: False
+    transforms:
+      type: Compose
+      ops: ~
+
+
+  shuffle: False
+  num_workers: 4
+  drop_last: False
+  pin_memory: True
+  collate_fn:
+    type: BatchImageCollateFunction   

@@ -1,0 +1,84 @@
+__include__: [
+  '../dataset/mpid.yml',
+  '../runtime.yml',
+  '../base/dataloader_dfine.yml',
+  '../base/optimizer.yml',
+  '../base/dfine_hgnetv2.yml',
+]
+
+# output_dir: ./outputs/df_mal_s_mpid-16-base
+output_dir: ./outputs/df_mal_s_mpid-16-MANet
+# output_dir: ./outputs/df_mal_m_plad-16-base
+# output_dir: ./outputs/df_mal_s_plad-16-MANe
+# output_dir: ./outputs/df_mal_s_plad-16-MANet-IRB
+# output_dir: ./outputs/df_mal_s_plad-16-manet-tab-ultralite
+# output_dir: ./outputs/df_mal_s_plad-16-MANetBackbone-HyperCompute-lite
+# output_dir: ./outputs/df_mal_s_idid-16-base
+# output_dir: ./outputs/df_mal_s_idid-16-manet
+# output_dir: ./outputs/df-mal-s-idid-16-manet-tab-mfm1
+# output_dir: ./outputs/df-mal-s-idid-16-manet-lgwa
+
+
+model: DEIM_GG
+
+DEIM_GG:
+  # yaml_path: configs/cfg/dfine-m.yaml
+  # yaml_path: configs/cfg/dfine-s.yaml
+  # yaml_path: configs/cfg/ds.yaml
+  # yaml_path: configs/cfg-improve/dfine-s-FBRT.yaml
+  # yaml_path: configs/cfg-improve/dfine-s-FDPN.yaml
+  # yaml_path: configs/cfg-improve/dfine-s-nnWNet.yaml
+  # yaml_path: configs/cfg/dfine-s-HS-FPN.yaml
+  # yaml_path: configs/cfg/dfine-s-hyperACE.yaml
+  # yaml_path: configs/cfg/dfine-s-MPCA.yaml
+  # yaml_path: configs/cfg/dfine-s-hyper.yaml
+  # yaml_path: configs/cfg/dfine-s-RepHMS.yaml
+  # yaml_path: configs/cfg/dfine-s-hyper-improve.yaml
+  # yaml_path: configs/cfg/dfine-s-goldyolo.yaml
+  # yaml_path: configs/cfg/dfine-s-tab-mnm-encoder.yaml
+  # yaml_path: configs/cfg/dfine-s-tab-mnm.yaml
+  # yaml_path: configs/cfg/dfine-s-MANet.yaml
+  yaml_path: configs/cfg-improve/dfine-s-manet-tab-mfm.yaml
+  # yaml_path: configs/cfg-improve/dfine-s-manet-tab-ultralite.yaml
+  # yaml_path: configs/cfg/dfine-s-manet-all.yaml
+  # yaml_path: configs/cfg-improve/dfine-s-MANet-HyperCompute.yaml
+  # yaml_path: configs/cfg-improve/dfine-s-MANetBackbone-HyperCompute.yaml
+  # yaml_path: configs/cfg-improve/dfine-s-MANetBackbone-HyperCompute-lite.yaml
+  # yaml_path: configs/cfg/dfine-s-manet-lgwa.yaml
+
+optimizer:
+  type: AdamW
+  params:
+    -
+      params: '^(?=.*backbone)(?!.*norm|bn).*$'
+      lr: 0.0001
+    -
+      params: '^(?=.*backbone)(?=.*norm|bn).*$'
+      lr: 0.0001
+      weight_decay: 0.
+    -
+      params: '^(?=.*(?:encoder|decoder))(?=.*(?:norm|bn|bias)).*$'
+      weight_decay: 0.
+
+  lr: 0.0002
+  betas: [0.9, 0.999]
+  weight_decay: 0.0001
+
+
+# Increase to search for the optimal ema
+epoches: 132 # 120 + 4n
+train_dataloader:
+  dataset:
+    transforms:
+      policy:
+        epoch: 120
+  collate_fn:
+    stop_epoch: 120
+    ema_restart_decay: 0.9999
+    base_size_repeat: 20   #~关闭多尺度平时是20
+
+## Our Loss
+DEIMCriterion:
+  weight_dict: {loss_mal: 1, loss_bbox: 5, loss_giou: 2, loss_fgl: 0.15, loss_ddf: 1.5}
+  losses: ['mal', 'boxes', 'local']
+  gamma: 1.5

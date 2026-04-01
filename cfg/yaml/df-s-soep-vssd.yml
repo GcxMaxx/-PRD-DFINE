@@ -1,0 +1,136 @@
+__include__: [
+  '../dataset/plad.yml',
+  '../runtime.yml',
+  '../base/dataloader_dfine.yml',
+  '../base/optimizer.yml',
+  '../base/dfine_hgnetv2.yml',
+]
+print_freq: 100
+# output_dir: ./outputs/df_mal_s_mpid-16-base
+# output_dir: ./outputs/df-s-mpid-16-MANet
+# output_dir: ./outputs/df_mal_m_plad-16-base
+# output_dir: ./outputs/df_mal_s_plad-16-MANe
+# output_dir: ./outputs/df_mal_s_plad-16-MANet-IRB
+# output_dir: ./outputs/df_mal_s_plad-16-manet-tab-ultralite
+# output_dir: ./outputs/df_mal_s_plad-16-MANetBackbone-HyperCompute-lite
+# output_dir: ./outputs/df-s-mpid-16-base
+# output_dir: ./outputs/df-s-mpid-16-glvss
+# output_dir: ./outputs/df-s-mpid-16-two-glvss
+# output_dir: ./outputs/df-s-mpid-16-glvss-backone
+# output_dir: ./outputs/df-s-mpid-16-ba-glvss-dsa
+# output_dir: ./outputs/df-s-mpid-16-ba-glvss-2dsa
+# output_dir: ./outputs/df-s-mpid-16-ba-glvss-dsa-fadc
+# output_dir: ./outputs/df-s-mpid-16-ba-glvss-hybrid
+# output_dir: ./outputs/df-s-mpid-16-ba-glvss-cssc
+# output_dir: ./outputs/df-s-mpid-16-ba-glvss-hybrid-tab
+# outputs_dir: ./outputs/df-s-mpid--16-ba-glvss-cssc-1s1-fadc
+# output_dir: ./outputs/df-s-mpid-16-ba-glvss-cssc-mfm-tab
+# output_dir: ./outputs/df-s-mpid-16-dnvc4
+# output_dir: ./outputs/df-s-cplid-16-base
+# output_dir: ./outputs/df-n-lplid-8-base
+# output_dir: ./outputs/df-s-ti-8-base160
+# output_dir: ./outputs/df-s-lplid-8-ba-glvss
+# output_dir: ./outputs/df-s-lplid-8-ba-glvass-cssc
+# output_dir: ./outputs/df-s-lplid-8-vssdc160
+# output_dir: ./outputs/df-s-lplid-8-vssd-tab160
+# output_dir: ./outputs/df-s-lplid-8-SOEP-P3P4
+# output_dir: ./outputs/df-s-lplid-8-SOEP
+# output_dir: ./outputs/df-s-lplid-8-fbrt
+# output_dir: ./outputs/df-s-lplid-8-soep-vssd
+# output_dir: ./outputs/df-s-lplid-8-soep-vssd-dqs
+# output_dir: ./outputs/df-s-lplid-8-soep-blg
+# output_dir: ./outputs/df-s-lplid-8-soep-vssk
+# output_dir: ./outputs/df-s-lplid-8-soep-vssk-mfm
+# output_dir: ./outputs/df-s-lplid-8-cgfm
+output_dir: ./outputs/df-s-plad-cfgm-omni
+# output_dir: ./outputs/df-s-tlid-8-s-soep-vssk-cgfm
+# output_dir: ./outputs/df-s-tlid-8-base-vssk-cgfm
+
+model: DEIM_GG
+
+DEIM_GG:
+  # yaml_path: configs/cfg/dfine-n.yaml
+  # yaml_path: configs/cfg/dfine-s.yaml
+  # yaml_path: configs/cfg-im/dfine-s-vssd.yaml
+  # yaml_path: configs/cfg-im/dfine-s-vssd-tab.yaml
+  # yaml_path: configs/cfg-im/dfine-s-vssd-ema.yaml
+  # yaml_path: configs/cfg-im/dfine-s-glvss-backone.yaml
+  # yaml_path: configs/cfg-im/dfine-s-ba-glvss-vssd.yaml
+  # yaml_path: /mnt/data/user/gg/deim/configs/cfg-im/dfine-s-vssd-gdsafusion.yaml
+  # yaml_path: configs/cfg-im/dfine-s-glvss.yaml
+  # yaml_path: configs/cfg/dfine-s-FBRT.yaml
+  # yaml_path: configs/cfg/dfine-s-SOEP-P3P4.yaml
+  # yaml_path: configs/cfg/dfine-s-SOEP.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssd.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssd-dqs.yaml
+  # yaml_path: configs/cfg/dfine-s-SOEP.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-simam.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-blg.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssk.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssk-cdfa.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssk-mfm.yaml
+  yaml_path: configs/cfg-ins/df-s-vssk-cgfm.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssd.yaml
+  # yaml_path: configs/cfg-ins/dfine-s-soep-vssk-cgfm-omni.yaml
+
+
+
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssk-mfm-omni.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssk-mfm-omni.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssk-cgfm-omni.yaml
+  # yaml_path: configs/cfg-im/dfine-s-0.8x-soep-vssk-cgfm-omni.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssk-gdsa-omni.yaml
+  # yaml_path: configs/cfg-im/dfine-s-0.9x-soep-vssk-cgfm-omni.yaml
+  # yaml_path: configs/cfg-ins/dfine-s-vssd.yaml
+  # yaml_path: configs/cfg-ins/dfine-s-soep-vssk-cgfm-omni.yaml
+  # yaml_path: configs/cfg-ins/dfine-s-soep-vssd.yaml
+  # yaml_path: configs/cfg-ins/df-s-cgfm-omni.yaml
+  # yaml_path: configs/cfg-im/dfine-s-soep-vssk-cgfm-omni.yaml
+
+
+  
+
+
+optimizer:
+  type: AdamW
+  params:
+    -
+      params: '^(?=.*backbone)(?!.*norm|bn).*$'
+      lr: 0.0001
+    -
+      params: '^(?=.*backbone)(?=.*norm|bn).*$'
+      lr: 0.0001
+      weight_decay: 0.
+    -
+      params: '^(?=.*(?:encoder|decoder))(?=.*(?:norm|bn|bias)).*$'
+      weight_decay: 0.
+
+  lr: 0.0002
+  betas: [0.9, 0.999]
+  weight_decay: 0.0001
+
+# Increase to search for the optimal ema
+epoches: 132 # 120 + 4n
+train_dataloader:
+  dataset:
+    transforms:
+      policy:
+        epoch: 120
+  collate_fn:
+    stop_epoch: 120
+    ema_restart_decay: 0.9999
+    base_size_repeat: ~
+
+
+# # Increase to search for the optimal ema
+# epoches: 300 # 120 + 4n
+# train_dataloader:
+#   dataset:
+#     transforms:
+#       policy:
+#         epoch: 288
+#   collate_fn:
+#     stop_epoch: 288
+#     ema_restart_decay: 0.9999
+#     base_size_repeat: ~   #~关闭多尺度,平时是20
+

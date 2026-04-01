@@ -1,0 +1,43 @@
+task: detection
+
+evaluator:
+  type: CocoEvaluator
+  iou_types: ['bbox', ]
+
+num_classes: 3
+remap_mscoco_category: False
+
+train_dataloader:
+  type: DataLoader
+  dataset:
+    type: CocoDetection
+    img_folder: /mnt/data/user/gg/deim/dataset/IPLID/images/train
+    ann_file: /mnt/data/user/gg/deim/dataset/IPLID/annotations/train.json
+    return_masks: False
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: True
+  num_workers: 4
+  drop_last: True
+  pin_memory: True
+  collate_fn:
+    type: BatchImageCollateFunction
+
+val_dataloader:
+  type: DataLoader
+  dataset:
+    type: CocoDetection
+    # use the validation split (images + annotations)
+    img_folder: /mnt/data/user/gg/deim/dataset/IPLID/images/val
+    ann_file: /mnt/data/user/gg/deim/dataset/IPLID/annotations/val.json
+    return_masks: False
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: False
+  num_workers: 4
+  drop_last: False
+  pin_memory: True
+  collate_fn:
+    type: BatchImageCollateFunction
